@@ -60,13 +60,15 @@ def main():
         print 'Invalid mode! Try again.'
 
     if mode == 'sample':
-        stream.sample()
+        stream.sample(languages = 'en')
 
     elif mode == 'filter':
         follow_list = raw_input('Users to follow (comma separated): ').strip()
         track_list = raw_input('Keywords to track (comma seperated): ').strip()
         #csvwriter = csv.writer(open("tweets.csv", "a"))
 
+        #stream.filter(languages = ["en"])
+        #stream.filter(track = ["basketball"])
 
         if follow_list:
             follow_list = [u for u in follow_list.split(',')]
@@ -92,8 +94,10 @@ def main():
             track_list = None
         #print follow_list
         #csvwriter.writerow([follow_list])
+        #print(track_list[0])
         for i in xrange(5000):
-            stream.filter(follow_list, track_list)
+            stream.filter(track= [track_list[0]] ,languages = ["en"])
+            #stream.filter(follow_list,track_list,languages = ["en"])
         #i = i + 1
 
 
